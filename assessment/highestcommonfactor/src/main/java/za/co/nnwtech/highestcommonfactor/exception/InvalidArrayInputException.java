@@ -1,7 +1,7 @@
 package za.co.nnwtech.highestcommonfactor.exception;
 
 @SuppressWarnings("serial")
-public class InvalidArrayInputException extends RuntimeException
+public class InvalidArrayInputException extends Throwable
 {
 	public InvalidArrayInputException(String message)
 	{
