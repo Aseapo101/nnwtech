@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PhysicalAddressDto implements Addressable
 {
+	public String name;
 	public String addressLine_1;
 	public String addressLine_2;
 	public String city;

@@ -23,15 +23,16 @@ class HighestCommonFactorTest
 	@Test
 	void test() 
 	{
-		
-		try {
+		try 
+		{
 			
 			assertTrue(Integer.compare(objectRefeference.findHighestCommonFactor(listInput.toArray(new Integer [listInput.size()])), 3)==0 );
 			assertFalse(Integer.compare(objectRefeference.findHighestCommonFactor(listInput.toArray(new Integer [listInput.size()])), 1)==0 );
 			Assertions.assertThrows(InvalidArrayInputException.class, () -> objectRefeference.findHighestCommonFactor(null));
 			Assertions.assertThrows(NoCommonFactorException.class, () -> objectRefeference.findHighestCommonFactor(List.of(4,13,20).toArray(new Integer[3])));
 			
-		} catch (NoCommonFactorException | InvalidArrayInputException e) {
+		} catch (NoCommonFactorException | InvalidArrayInputException e) 
+		{
 			e.printStackTrace();
 		}
 	}

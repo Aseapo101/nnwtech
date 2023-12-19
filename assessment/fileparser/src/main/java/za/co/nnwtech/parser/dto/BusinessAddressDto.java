@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BusinessAddressDto implements Addressable
 {
+	public String name;
 	public String addressLine;
 	public String city;
 	public String province;

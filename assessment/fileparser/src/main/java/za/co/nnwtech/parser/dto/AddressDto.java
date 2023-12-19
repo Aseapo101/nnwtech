@@ -11,6 +11,6 @@ import za.co.nnwtech.parser.enums.AddressTypeEnum;
 public class AddressDto 
 {
 
-	public AddressTypeEnum addressType;
+	public AddressTypeEnum addressTypeEnum;
 	public Addressable addressDetail;
 }
