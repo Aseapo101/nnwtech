@@ -7,8 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostalAddressDto implements Addressable{
-
+public class PostalAddressDto implements Addressable
+{
+	public String name;
 	public String city;
 	public String postalCode;
 	public String country;

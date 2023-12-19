@@ -1,31 +1,20 @@
 package za.co.nnwtech.parser.adapters;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class AddressLineAdapter
 {
 
-	public String LineOne;
-	public String LineTwo;
+	public String line1;
+	public String line2;
 	
 	public AddressLineAdapter (String... param) 
 	{
 		
 	}
-
-	public String getLineOne() {
-		return LineOne;
-	}
-
-	public void setLineOne(String lineOne) {
-		LineOne = lineOne;
-	}
-
-	public String getLineTwo() {
-		return LineTwo;
-	}
-
-	public void setLineTwo(String lineTwo) {
-		LineTwo = lineTwo;
-	}
-	
-	
 }

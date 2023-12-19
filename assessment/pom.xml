@@ -59,6 +59,6 @@
 	
 	<modules>
 		<module>highestcommonfactor</module>
-		<module>jsonparser</module>
+		<module>fileparser</module>
 	</modules>
 </project>
