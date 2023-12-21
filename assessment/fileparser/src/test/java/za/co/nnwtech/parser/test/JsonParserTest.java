@@ -41,11 +41,23 @@ class JsonParserTest {
 	}
 
 	@Test
-	void iuyio31je9() 
+	void printCertainTypeAddress() 
 	{
 		fail("Not yet implemented");
 	}
-
+	
+	@Test
+	void testValidateAllAddressTypes() 
+	{
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	void testValidatePrettyPrint() 
+	{
+		fail("Not yet implemented");
+	}
+	
 	@Test
 	void testPrintAllAddressesIntheFile() 
 	{

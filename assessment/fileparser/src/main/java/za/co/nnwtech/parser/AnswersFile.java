@@ -58,12 +58,14 @@ public class AnswersFile
 		return addressSet;
 	}
 	
-	public void printCertainTypeAddress(AddressAdapter addressAdapter)
+	public String printCertainTypeAddress(AddressAdapter addressAdapter)
 	{
 		var addressDto = FileParserUtil.parseFileElement(addressAdapter);
 		var addressString = FileParserUtil.print(addressDto);
 		
-		System.out.println("Address type : "+addressDto.addressTypeEnum.toString()+" Address details : "+addressString);
+		StringBuffer results = new StringBuffer("Address type : ").append(addressDto.addressTypeEnum.toString()).append("Address details : ").append(addressString);
+		log.info(results.toString());
+		return results.toString();
 	}
 	
 	public boolean validateAddress(AddressAdapter addressAdapter)
