@@ -27,18 +27,11 @@ public class JsonParser
 			
 			AddressAdapter [] parsedJsonArrayElements =  gson.fromJson(new FileReader(Constants.JSON_INPUT_FILE_DIRECTORY), AddressAdapter [].class);
 			
-			System.out.println("Results : ");
-			for(AddressAdapter element : parsedJsonArrayElements) 
-			{
-				System.out.println("Results Value :" +element.toString());
-				
-			}
 			//Call separate thread for each element parsing
 			jsonParser.printAllAddressesIntheFile(parsedJsonArrayElements);
 			jsonParser.validateAddress(parsedJsonArrayElements[0]);
 			jsonParser.printCertainTypeAddress(parsedJsonArrayElements[0]);
 			jsonParser.prettyPrintAllAddresses();
-			log.info("Validating all addresses.............");
 			jsonParser.validateAllAddresses(parsedJsonArrayElements);
 		}
 		catch(Exception e)
