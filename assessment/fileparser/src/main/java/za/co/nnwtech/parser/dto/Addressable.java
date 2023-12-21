@@ -6,6 +6,10 @@ import java.util.StringJoiner;
 public interface Addressable 
 {
 
+	String getAddressLineOne();
+	String getCity();
+	String getCountry();
+	String getPostalCode();
 	//Type: Line details - city - province/state - postal code – country
 	default String print(String...strings)
 	{

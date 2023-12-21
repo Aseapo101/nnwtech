@@ -18,8 +18,8 @@ public interface PhysicalAddressMapper
 	@Mapping(target = "province", source = "provinceOrState.name")
 	@Mapping(target = "name", source = "type.name")
 	@Mapping(target = "city", source = "cityOrTown")
-	@Mapping(target = "addressLine_1", source = "addressLineDetail.line1")
-	@Mapping(target = "addressLine_2", source = "addressLineDetail.line2")
+	@Mapping(target = "addressLineOne", source = "addressLineDetail.line1")
+	@Mapping(target = "addressLineTwo", source = "addressLineDetail.line2")
 	public PhysicalAddressDto mapPhysicalAddressDto(AddressAdapter addressAdapter);
 	
 	

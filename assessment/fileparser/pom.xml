@@ -9,7 +9,6 @@
   <artifactId>jsonparser</artifactId>
   <name>fileparser</name>
   <description>fileparser</description>
- 
   <build>
 		<plugins>
 			

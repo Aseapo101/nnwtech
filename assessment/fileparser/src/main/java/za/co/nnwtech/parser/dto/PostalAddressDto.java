@@ -9,8 +9,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PostalAddressDto implements Addressable
 {
-	public String name;
 	public String city;
 	public String postalCode;
 	public String country;
+	public String name;
+	
+	@Override
+	public String getAddressLineOne() {
+		throw new UnsupportedOperationException("no address line in the postal address type");
+		
+	}
 }

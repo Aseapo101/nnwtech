@@ -9,7 +9,6 @@ import za.co.nnwtech.parser.dto.BusinessAddressDto;
 import za.co.nnwtech.parser.dto.PhysicalAddressDto;
 import za.co.nnwtech.parser.dto.PostalAddressDto;
 import za.co.nnwtech.parser.enums.AddressTypeEnum;
-import za.co.nnwtech.parser.mapper.AddressMapper;
 import za.co.nnwtech.parser.mapper.BusinessAddressMapper;
 import za.co.nnwtech.parser.mapper.PhysicalAddressMapper;
 import za.co.nnwtech.parser.mapper.PostalAddressMapper;
@@ -64,17 +63,33 @@ public class FileParserUtil
 		if(addressable instanceof PhysicalAddressDto)
 		{
 			var physicalAddressDto = ((PhysicalAddressDto) addressable);
-			return addressable.print(physicalAddressDto.getAddressLine_1(),
-					physicalAddressDto.getAddressLine_2(),physicalAddressDto.getCity(),
+			return addressable.print(physicalAddressDto.getAddressLineOne(),
+					physicalAddressDto.getAddressLineTwo(),physicalAddressDto.getCity(),
 					physicalAddressDto.getProvince(),physicalAddressDto.getCountry());
 		}
 		if(addressable instanceof BusinessAddressDto)
 		{
 			var businessAddressDto = ((BusinessAddressDto) addressable);
-			return addressable.print(businessAddressDto.getAddressLine(),businessAddressDto.getCity(),
+			return addressable.print(businessAddressDto.getAddressLineOne(),businessAddressDto.getCity(),
 					businessAddressDto.getProvince(),businessAddressDto.getCountry(),
 					businessAddressDto.getPostalCode());
 		}
 		return null;
 	}
+	
+	public boolean validatePhysicalAdress(AddressDto addressDto) 
+	{
+		
+		return false;
+	}
+	public static boolean validatePostalAdress(AddressDto addressDto) 
+	{
+		
+		return false;
+	}
+	public static boolean validateBusinessAdress(AddressDto addressDto) 
+	{
+	
+	return false;
+}
 }

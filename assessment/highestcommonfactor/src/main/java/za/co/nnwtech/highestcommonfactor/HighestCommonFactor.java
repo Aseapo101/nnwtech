@@ -19,7 +19,7 @@ public class HighestCommonFactor {
 	public static void main(String[] args) 
 	{
 	
-		Integer [] inputArray = {2,4,6,7};
+		Integer [] inputArray = {2,4,6,8};
 		HighestCommonFactor HighestCommonFactorObjectReference = new HighestCommonFactor();
 		
 		try
