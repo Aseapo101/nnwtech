@@ -14,8 +14,9 @@ public class AddressAdapter
 {
 	public TypeAdapter type;
 	public String postalCode;
-	public String lastUpdate; //use date type
+	public String lastUpdate; 
 	public String cityOrTown;
+	public String suburbOrDistrict;
 	public ProvinceOrStateAdapter provinceOrState;
 	public CountryAdapter country;
 	public AddressLineAdapter addressLineDetail;
