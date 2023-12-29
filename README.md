@@ -28,13 +28,26 @@ The project is made up of a maven parent module, nnwtech-assessment and two mave
    In order to test the module, clone the repo:
 
     1. Update the inputArray variable in the main class or leave the default value.
-    2. run the command, mvn clean install to genrate a fat jar
-    3. run the jar generated in ../target directory with the command java -jar <jar-directory>.highestcommonfactor-0.0.1.jar
+    2. run the command, mvn clean install to generate a fat jar
+    3. run jar generated in ../target directory, while being in the module root directory (highestcommonfactor), with the command java  -jar (jar- 
+       directory)/highestcommonfactor-0.0.1.jar
     4. HCF will be determined if it exists or otherwise as per printed on console.
 
 - Question-2
 
   The maven module name,fileparser, provides the solution to the question in the java class, za.co.nnwtech.parse.AnswersFile.java. The main class of the 
   module, za.co.nnwtech.parser.JsonParser.java
+
+  In order to test the module, clone the repo:
+
+    1. run the command, mvn clean install to generate a fat jar
+    2. run jar generated in ../target directory, while being in the module root directory (fileparser), with the command java  -jar (jar- 
+       directory)/jsonparser-0.0.1.jar
+    1. The address pretty print of the json file will be printed on console.
+    2. the formatted addresses as per,  (Line details - city - province/state - postal code – country) will be printed on console for all addresses.
+    3. An address will be printed on console and its type will be determined accordingly.
+    4. An address will be validated and if a validation fails, the message, Validation failure message : => (reason for validation failure)
+    5. All addresses in the file will be printed.
+       
   
 
