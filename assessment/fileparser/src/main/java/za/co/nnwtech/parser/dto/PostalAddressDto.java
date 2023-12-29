@@ -13,6 +13,8 @@ public class PostalAddressDto implements Addressable
 	public String postalCode;
 	public String country;
 	public String name;
+	public String countryCode;
+	public String province;
 	
 	@Override
 	public String getAddressLineOne() {

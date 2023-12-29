@@ -16,4 +16,5 @@ public class BusinessAddressDto implements Addressable
 	public String postalCode;
 	public String country;
 	public String suburb;
+	public String countryCode;
 }

@@ -1,5 +1,6 @@
 package za.co.nnwtech.parser.exception;
 
+@SuppressWarnings("serial")
 public class InvalidAddressException extends RuntimeException
 {
 

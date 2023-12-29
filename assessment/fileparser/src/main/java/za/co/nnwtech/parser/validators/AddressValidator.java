@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 import lombok.extern.slf4j.Slf4j;
+import za.co.nnwtech.parser.constants.Constants;
 import za.co.nnwtech.parser.dto.AddressDto;
 import za.co.nnwtech.parser.dto.Addressable;
 import za.co.nnwtech.parser.dto.BusinessAddressDto;
@@ -70,9 +71,10 @@ public class AddressValidator
 	private static void printErrorMessagesToConsole(Set<String> errorMessages,AddressTypeEnum addressType)
 	{
 		if(!errorMessages.isEmpty()) {
-			errorMessages.stream().forEach(message -> log.info("Validation failure message : => "+message+" Address type : "+addressType.toString()));
+			errorMessages.stream().forEach(message -> log.info("Validation failure message : =>  {}",message+" , failed address type, "+addressType.toString()));
 		}
 	}
+	
 	private static HashSet<String> validateAddress(Addressable addressable)
 	{
 		
@@ -87,7 +89,8 @@ public class AddressValidator
 			
 		}
 		
-		if(!(Pattern.matches("\\d", addressable.getPostalCode()))) 
+		
+		if(!(Constants.DIGIT_REGEX.matcher(addressable.getPostalCode()).find())) 
 		{
 			validationErrorMessages.add(za.co.nnwtech.parser.constants.Constants.POSTAL_CODE_VALIDATION_MESSAGE);
 		}
@@ -97,6 +100,14 @@ public class AddressValidator
 		{	
 			validationErrorMessages.add(za.co.nnwtech.parser.constants.Constants.COUNTRY_VALIDATION_MESSAGE);
 		}
+		
+		if(countryOptionalValue.isPresent() && za.co.nnwtech.parser.constants.Constants.SOUTH_AFRICA_COUNTRY_CODE.equalsIgnoreCase(addressable.getCountryCode()))
+		{	
+			
+			if(!Optional.ofNullable(addressable.getProvince()).isPresent())
+				validationErrorMessages.add(za.co.nnwtech.parser.constants.Constants.PROVINCE_VALIDATION_MESSAGE);
+		}
+		
 		return validationErrorMessages;
 	}
 }
