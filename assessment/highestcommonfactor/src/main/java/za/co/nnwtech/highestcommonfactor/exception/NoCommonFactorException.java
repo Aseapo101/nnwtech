@@ -1,5 +1,6 @@
 package za.co.nnwtech.highestcommonfactor.exception;
 
+@SuppressWarnings("serial")
 public class NoCommonFactorException extends Throwable
 {
 

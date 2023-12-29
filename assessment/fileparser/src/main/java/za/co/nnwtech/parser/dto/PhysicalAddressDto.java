@@ -15,5 +15,6 @@ public class PhysicalAddressDto implements Addressable
 	public String city;
 	public String province;
 	public String postalCode;
-	public String country;	
+	public String country;
+	public String countryCode;
 }

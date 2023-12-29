@@ -65,7 +65,7 @@ public class FileParserUtil
 			var physicalAddressDto = ((PhysicalAddressDto) addressable);
 			return addressable.print(physicalAddressDto.getAddressLineOne(),
 					physicalAddressDto.getAddressLineTwo(),physicalAddressDto.getCity(),
-					physicalAddressDto.getProvince(),physicalAddressDto.getCountry());
+					physicalAddressDto.getProvince(),physicalAddressDto.getCountry(),physicalAddressDto.getPostalCode());
 		}
 		if(addressable instanceof BusinessAddressDto)
 		{

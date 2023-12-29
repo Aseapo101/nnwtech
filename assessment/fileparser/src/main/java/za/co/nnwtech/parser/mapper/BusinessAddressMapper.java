@@ -20,5 +20,6 @@ public interface BusinessAddressMapper
 	@Mapping(target = "city", source = "cityOrTown")
 	@Mapping(target = "addressLineOne", source = "addressLineDetail.line1")
 	@Mapping(target = "suburb", source = "suburbOrDistrict")
+	@Mapping(target = "countryCode", source = "country.code")
 	public BusinessAddressDto mapBusinessAddressDto(AddressAdapter addressAdapter);
 }

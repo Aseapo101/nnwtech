@@ -10,6 +10,9 @@ public interface Addressable
 	String getCity();
 	String getCountry();
 	String getPostalCode();
+	String getCountryCode();
+	String getProvince();
+	
 	//Type: Line details - city - province/state - postal code – country
 	default String print(String...strings)
 	{

@@ -33,7 +33,7 @@ public class AnswersFile
 		JsonElement unformattedJsonFile = com.google.gson.JsonParser.parseReader(new FileReader(Constants.JSON_INPUT_FILE_DIRECTORY));
 		String formattedJsonFile = gson.toJson(unformattedJsonFile);
 		
-		log.info(formattedJsonFile);
+		log.info("File Pretty print :=> {}",formattedJsonFile);
 	}
 	
 	//For each address in the attached file, determine if it is valid or not, and if not give an indication of what is invalid in a message format of your choice.
@@ -54,7 +54,7 @@ public class AnswersFile
 			
 		}
 		
-		addressSet.stream().forEach(address -> System.out.println(address));
+		addressSet.stream().forEach(address -> log.info("Formatted address :=> {}",address));
 		return addressSet;
 	}
 	
@@ -63,7 +63,7 @@ public class AnswersFile
 		var addressDto = FileParserUtil.parseFileElement(addressAdapter);
 		var addressString = FileParserUtil.print(addressDto);
 		
-		StringBuffer results = new StringBuffer("Address type : ").append(addressDto.addressTypeEnum.toString()).append("Address details : ").append(addressString);
+		StringBuffer results = new StringBuffer("Address type : ").append(addressDto.addressTypeEnum.toString()).append(" Address details : ").append(addressString);
 		log.info(results.toString());
 		return results.toString();
 	}
@@ -87,7 +87,6 @@ public class AnswersFile
 	
 	private boolean validateSouthAfricaAddress(String province)
 	{
-		//TODO:Check valid province values..
 		return (Optional.ofNullable(province).isPresent())?true:false;
 	}
 }
