@@ -3,7 +3,6 @@ package za.co.nnwtech.parser.validators;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
-import java.util.regex.Pattern;
 
 import lombok.extern.slf4j.Slf4j;
 import za.co.nnwtech.parser.constants.Constants;
@@ -18,7 +17,7 @@ import za.co.nnwtech.parser.enums.AddressTypeEnum;
 public class AddressValidator 
 {
 
-	public static void validateAddress(AddressDto addressDto)
+	public static Set<String> validateAddress(AddressDto addressDto)
 	{
 		int addressTypeCode = addressDto.getAddressTypeEnum().getCode();
 		
@@ -27,26 +26,25 @@ public class AddressValidator
 			case 5 : 
 				
 				BusinessAddressDto businessAddress = ((BusinessAddressDto)addressDto.getAddressDetail());
-				isValidBusinessAddress(businessAddress);
-				break;
+				return isValidBusinessAddress(businessAddress);
 			case 1 :
 				
 				PhysicalAddressDto address = ((PhysicalAddressDto)addressDto.getAddressDetail());
-				isValidPhysicalAddress(address);
-				break;
+				return isValidPhysicalAddress(address);
 			case 2 : 
 
 				PostalAddressDto postalAddress = ((PostalAddressDto)addressDto.getAddressDetail());
-				isValidPostalAddress(postalAddress);
-				break;
-			default:
+				return isValidPostalAddress(postalAddress);
+		default:
+			return new HashSet<String>();
 		}
 	}
-	private static void isValidPostalAddress(PostalAddressDto postalAddressDto) 
+	
+	private static Set<String> isValidPostalAddress(PostalAddressDto postalAddressDto) 
 	{
 		var validateMessages = validateAddress(postalAddressDto);
 		validateCity(postalAddressDto.getCity(),validateMessages);
-		printErrorMessagesToConsole(validateMessages,AddressTypeEnum.POSTAL_ADDRESS);
+		return printErrorMessagesToConsole(validateMessages,AddressTypeEnum.POSTAL_ADDRESS);
 	}
 	
 	private static void validateCity(String city,Set<String> validateMessages)
@@ -55,24 +53,25 @@ public class AddressValidator
 			validateMessages.add(za.co.nnwtech.parser.constants.Constants.CITY_VALIDATION_MESSAGE);
 	}
 	
-	private static void isValidBusinessAddress(BusinessAddressDto businessAddressDto) 
+	private static Set<String> isValidBusinessAddress(BusinessAddressDto businessAddressDto) 
 	{
 		var validateMessages = validateAddress(businessAddressDto);
-		printErrorMessagesToConsole(validateMessages,AddressTypeEnum.BUSINESS_ADDRESS);
+		return printErrorMessagesToConsole(validateMessages,AddressTypeEnum.BUSINESS_ADDRESS);
 	}
 	
-	private static void isValidPhysicalAddress(PhysicalAddressDto physicalAddressDto) 
+	private static Set<String> isValidPhysicalAddress(PhysicalAddressDto physicalAddressDto) 
 	{
 		var validateMessages = validateAddress(physicalAddressDto);
 		validateCity(physicalAddressDto.getCity(),validateMessages);
-		printErrorMessagesToConsole(validateMessages,AddressTypeEnum.PHYSICAL_ADDRESS);
+		return printErrorMessagesToConsole(validateMessages,AddressTypeEnum.PHYSICAL_ADDRESS);
 	}
 	
-	private static void printErrorMessagesToConsole(Set<String> errorMessages,AddressTypeEnum addressType)
+	private static Set<String> printErrorMessagesToConsole(Set<String> errorMessages,AddressTypeEnum addressType)
 	{
 		if(!errorMessages.isEmpty()) {
 			errorMessages.stream().forEach(message -> log.info("Validation failure message : =>  {}",message+" , failed address type, "+addressType.toString()));
 		}
+		return errorMessages;
 	}
 	
 	private static HashSet<String> validateAddress(Addressable addressable)

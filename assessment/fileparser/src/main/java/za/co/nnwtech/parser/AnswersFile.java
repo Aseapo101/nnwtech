@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
+import java.util.TreeMap;
 import java.util.regex.Pattern;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -37,10 +39,15 @@ public class AnswersFile
 	}
 	
 	//For each address in the attached file, determine if it is valid or not, and if not give an indication of what is invalid in a message format of your choice.
-	public void validateAllAddresses(AddressAdapter [] parsedJsonArrayElements)
+	public TreeMap<String,Set<String>> validateAllAddresses(AddressAdapter [] parsedJsonArrayElements)
 	{
-		Arrays.stream(parsedJsonArrayElements).forEach( element -> 
-		AddressValidator.validateAddress(FileParserUtil.parseFileElement(element)));
+		TreeMap<String,Set<String>> validationErrorsMap = new TreeMap<>();
+		
+		Arrays.stream(parsedJsonArrayElements).forEach( element -> {
+			validationErrorsMap.put(element.type.code, AddressValidator.validateAddress(FileParserUtil.parseFileElement(element)));
+		});
+		
+		return validationErrorsMap;
 	}
 	
 	public HashSet<String> printAllAddressesIntheFile(AddressAdapter [] parsedJsonArrayElements)
