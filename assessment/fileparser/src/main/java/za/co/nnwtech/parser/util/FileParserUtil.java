@@ -4,7 +4,6 @@ import java.util.TreeMap;
 
 import za.co.nnwtech.parser.adapters.AddressAdapter;
 import za.co.nnwtech.parser.dto.AddressDto;
-import za.co.nnwtech.parser.dto.Addressable;
 import za.co.nnwtech.parser.dto.BusinessAddressDto;
 import za.co.nnwtech.parser.dto.PhysicalAddressDto;
 import za.co.nnwtech.parser.dto.PostalAddressDto;

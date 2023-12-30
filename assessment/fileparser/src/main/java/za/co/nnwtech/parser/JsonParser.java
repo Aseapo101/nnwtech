@@ -1,8 +1,6 @@
 package za.co.nnwtech.parser;
 
 import java.io.FileReader;
-import java.io.FileWriter;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -21,7 +19,7 @@ public class JsonParser
 	{
 		
 		AnswersFile jsonParser = new AnswersFile();
-		try(FileWriter fw = new FileWriter(Constants.JSON_PRETTY_PRINT_OUTPUT))//remove
+		try
 		{
 			Gson gson = new GsonBuilder().setPrettyPrinting().create();
 			
