@@ -28,6 +28,14 @@ import za.co.nnwtech.parser.validators.AddressValidator;
 @NoArgsConstructor
 public class AnswersFile 
 {
+	
+	/**
+	 * prettyPrintAllAddresses() - Method reads the input json file and convert its contents into an human readable json format.
+	 * @return String - Json file pretty print representation.
+	 * @throws JsonIOException - Thrown if the file cannot be read.
+	 * @throws JsonSyntaxException - Thrown when the read file is found to have Json format discrepancies.
+	 * @throws FileNotFoundException - Thrown when the file is cannot be located in the specified directory.
+	 */
 	public String prettyPrintAllAddresses() throws JsonIOException, JsonSyntaxException, FileNotFoundException
 	{
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -39,7 +47,11 @@ public class AnswersFile
 		return formattedJsonFile;
 	}
 	
-	//For each address in the attached file, determine if it is valid or not, and if not give an indication of what is invalid in a message format of your choice.
+	/**
+	 * validateAllAddresses() - The method validates the json file (all addresses) contents by applying address rules. In case there is a validation failure, cause is determined.
+	 * @param parsedJsonArrayElements - Adapted json file address contents converted into java objects.
+	 * @return TreeMap<String,Set<String>> - Map of the reasons the address failed validation and the key being address type code.
+	 */
 	public TreeMap<String,Set<String>> validateAllAddresses(AddressAdapter [] parsedJsonArrayElements)
 	{
 		TreeMap<String,Set<String>> validationErrorsMap = new TreeMap<>();
@@ -51,9 +63,14 @@ public class AnswersFile
 		return validationErrorsMap;
 	}
 	
+	/**
+	 * printAllAddressesIntheFile() - The method prints the address details as per the required formart, (Line details - city - province/state - postal code – country)
+	 * @param parsedJsonArrayElements - Adapted json file address contents converted into a java object.
+	 * @return HashSet<String> - The json file addresses to be printed after they have been parsed to Java object.
+	 */
 	public HashSet<String> printAllAddressesIntheFile(AddressAdapter [] parsedJsonArrayElements)
 	{
-		HashSet<String> addressSet = new HashSet<String>(3);
+		HashSet<String> addressSet = new HashSet<String>(3);//only three addresses provided.
 		for(AddressAdapter element : parsedJsonArrayElements) 
 		{
 			var addressDto = FileParserUtil.parseFileElement(element);
@@ -66,6 +83,11 @@ public class AnswersFile
 		return addressSet;
 	}
 	
+	/**
+	 * printCertainTypeAddress() - Method determines the type of the address provided, prints it to console and determines its type.
+	 * @param addressAdapter - Adapted json address into a Java object.
+	 * @return String - String or sentence determining the type of address and its details.
+	 */
 	public String printCertainTypeAddress(AddressAdapter addressAdapter)
 	{
 		var addressDto = FileParserUtil.parseFileElement(addressAdapter);
@@ -76,6 +98,11 @@ public class AnswersFile
 		return results.toString();
 	}
 	
+	/**
+	 * validateAddress () - The method validates the address by applying address rules (Postal address to be only digits, if South-Africa is a country, province need to be valid, at-least one address line to be present).
+	 * @param addressAdapter - Adapted json address into a Java object.
+	 * @return boolean - True if validation passed, false otherwise.
+	 */
 	public boolean validateAddress(AddressAdapter addressAdapter)
 	{
 		Optional<String> addressLineOneOptionalValue = Optional.ofNullable(addressAdapter.addressLineDetail.getLine1());
