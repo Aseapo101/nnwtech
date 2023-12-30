@@ -38,6 +38,12 @@ public class HighestCommonFactor {
 		
 	}
 	
+	/**
+	 * @param inputArrayparam - Array with a collection of elements of which the Highest Common Factor to be determined.
+	 * @return Integer - The Highest Common Factor determined.
+	 * @throws NoCommonFactorException - Exception thrown when there is no Highest Common Factor found as elements do not have a common divisor.
+	 * @throws InvalidArrayInputException - Exception thrown when the input array is invalid, null or empty.
+	 */
 	public Integer findHighestCommonFactor(Integer [] inputArrayparam) throws NoCommonFactorException, InvalidArrayInputException
 	{
 		
