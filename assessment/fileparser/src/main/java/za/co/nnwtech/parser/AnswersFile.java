@@ -28,14 +28,15 @@ import za.co.nnwtech.parser.validators.AddressValidator;
 @NoArgsConstructor
 public class AnswersFile 
 {
-	//Write a function to pretty print all the addresses in the attached file
-	public void prettyPrintAllAddresses() throws JsonIOException, JsonSyntaxException, FileNotFoundException
+	public String prettyPrintAllAddresses() throws JsonIOException, JsonSyntaxException, FileNotFoundException
 	{
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		JsonElement unformattedJsonFile = com.google.gson.JsonParser.parseReader(new FileReader(Constants.JSON_INPUT_FILE_DIRECTORY));
 		String formattedJsonFile = gson.toJson(unformattedJsonFile);
 		
-		log.info("File Pretty print :=> {}",formattedJsonFile);
+		log.info("Json file pretty print :=> {}",formattedJsonFile);
+		
+		return formattedJsonFile;
 	}
 	
 	//For each address in the attached file, determine if it is valid or not, and if not give an indication of what is invalid in a message format of your choice.
