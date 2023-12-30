@@ -2,17 +2,21 @@ package za.co.nnwtech.parser.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.json.JSONException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.skyscreamer.jsonassert.JSONAssert;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonSyntaxException;
 
 import za.co.nnwtech.parser.AnswersFile;
 import za.co.nnwtech.parser.adapters.AddressAdapter;
@@ -101,7 +105,73 @@ class JsonParserTest {
 	@Test
 	void testValidatePrettyPrint() 
 	{
-		
+		String JsonActual = "[\r\n"
+				+ "    {\r\n"
+				+ "        \"id\": \"1\",\r\n"
+				+ "        \"type\": {\r\n"
+				+ "            \"code\": \"1\",\r\n"
+				+ "            \"name\": \"Physical Address\"\r\n"
+				+ "        },\r\n"
+				+ "        \"addressLineDetail\": {\r\n"
+				+ "            \"line1\": \"Address 1\",\r\n"
+				+ "            \"line2\": \"Line 2\"\r\n"
+				+ "        },\r\n"
+				+ "        \"provinceOrState\": {\r\n"
+				+ "            \"code\": \"5\",\r\n"
+				+ "            \"name\": \"Eastern Cape\"\r\n"
+				+ "        },\r\n"
+				+ "        \"cityOrTown\": \"City 1\",\r\n"
+				+ "        \"country\": {\r\n"
+				+ "            \"code\": \"ZA\",\r\n"
+				+ "            \"name\": \"South Africa\"\r\n"
+				+ "        },\r\n"
+				+ "        \"postalCode\": \"1234\",\r\n"
+				+ "        \"lastUpdated\": \"2015-06-21T00:00:00.000Z\"\r\n"
+				+ "    },\r\n"
+				+ "    {\r\n"
+				+ "        \"id\": \"2\",\r\n"
+				+ "        \"type\": {\r\n"
+				+ "            \"code\": \"2\",\r\n"
+				+ "            \"name\": \"Postal Address\"\r\n"
+				+ "        },\r\n"
+				+ "        \"cityOrTown\": \"City 2\",\r\n"
+				+ "        \"country\": {\r\n"
+				+ "            \"code\": \"LB\",\r\n"
+				+ "            \"name\": \"Lebanon\"\r\n"
+				+ "        },\r\n"
+				+ "        \"postalCode\": \"2345\",\r\n"
+				+ "        \"lastUpdated\": \"2017-06-21T00:00:00.000Z\"\r\n"
+				+ "    },\r\n"
+				+ "    {\r\n"
+				+ "        \"id\": \"3\",\r\n"
+				+ "        \"type\": {\r\n"
+				+ "            \"code\": \"5\",\r\n"
+				+ "            \"name\": \"Business Address\"\r\n"
+				+ "        },\r\n"
+				+ "        \"addressLineDetail\": {\r\n"
+				+ "            \"line1\": \"Address 3\",\r\n"
+				+ "            \"line2\": \"\"\r\n"
+				+ "        },\r\n"
+				+ "        \"cityOrTown\": \"City 3\",\r\n"
+				+ "        \"country\": {\r\n"
+				+ "            \"code\": \"ZA\",\r\n"
+				+ "            \"name\": \"South Africa\"\r\n"
+				+ "        },\r\n"
+				+ "        \"postalCode\": \"3456\",\r\n"
+				+ "        \"suburbOrDistrict\": \"Suburb 3\",\r\n"
+				+ "        \"lastUpdated\": \"2018-06-13T00:00:00.000Z\"\r\n"
+				+ "    }\r\n"
+				+ "]";
+		try
+		{
+			String prettyJsonString = jsonParser.prettyPrintAllAddresses();
+			
+			JSONAssert.assertEquals(prettyJsonString, JsonActual, false);
+		} 
+		catch (JsonIOException | JsonSyntaxException | FileNotFoundException | JSONException e)
+		{
+			e.printStackTrace();
+		} 
 	}
 	
 	@Test
