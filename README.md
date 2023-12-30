@@ -17,6 +17,7 @@ The project is made up of a maven parent module, nnwtech-assessment and two mave
 - [log4j-core](https://central.sonatype.com/artifact/org.apache.logging.log4j/log4j-core/2.22.0)
 - [log4j-impl](https://central.sonatype.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl/2.20.0)
 - [Junit](https://central.sonatype.com/artifact/org.junit.jupiter/junit-jupiter-api)
+- [JsonAssert](https://central.sonatype.com/artifact/org.skyscreamer/jsonassert)
 
 #### Instructions (Testing and running the project)
 
